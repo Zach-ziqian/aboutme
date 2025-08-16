@@ -44,16 +44,60 @@
             padding: 1rem 0;
         }
 
+        /* Custom Logo Icon */
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
+            display: flex;
+            align-items: center;
             text-decoration: none;
+            transition: all 0.3s ease;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            letter-spacing: -0.5px;
             transition: color 0.3s ease;
         }
 
-        .logo:hover {
+        .logo:hover .logo-text {
             color: #34495e;
+        }
+
+        /* Icon SVG styles */
+        .icon-bg {
+            fill: #2c3e50;
+            transition: all 0.3s ease;
+        }
+
+        .icon-accent {
+            fill: #e74c3c;
+            transition: all 0.3s ease;
+        }
+
+        .icon-detail {
+            fill: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover .icon-bg {
+            fill: #34495e;
+        }
+
+        .logo:hover .icon-accent {
+            fill: #c0392b;
         }
 
         .nav-links {
@@ -135,7 +179,7 @@
             transform: scale(1);
             transition: all 0.3s ease;
             text-shadow: 2px 2px 4px rgba(52, 73, 94, 0.1);
-            font-family: 'KaiTi', 'æ¥·ä½"', 'STKaiti', 'BiauKai', serif;
+            font-family: 'KaiTi', '楷体', 'STKaiti', 'BiauKai', serif;
         }
 
         .chinese-name:hover {
@@ -381,6 +425,15 @@
             .section-title {
                 font-size: 2rem;
             }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
         }
 
         /* Scroll animations */
@@ -441,7 +494,34 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">Ziqian Wang</a>
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Scroll/Document base -->
+                            <rect x="8" y="6" width="29" height="33" rx="2" ry="2" class="icon-bg"/>
+                            
+                            <!-- Scroll details -->
+                            <rect x="12" y="10" width="21" height="2" class="icon-detail"/>
+                            <rect x="12" y="14" width="18" height="1.5" class="icon-detail"/>
+                            <rect x="12" y="17" width="21" height="1.5" class="icon-detail"/>
+                            <rect x="12" y="20" width="15" height="1.5" class="icon-detail"/>
+                            
+                            <!-- Chinese seal/stamp accent -->
+                            <circle cx="28" cy="28" r="6" class="icon-accent"/>
+                            <rect x="25" y="25" width="6" height="6" rx="1" class="icon-detail"/>
+                            
+                            <!-- Quill/brush pen -->
+                            <path d="M35 4 L40 9 L37 12 L32 7 Z" class="icon-accent"/>
+                            <rect x="31" y="7" width="2" height="8" rx="1" transform="rotate(45 32 11)" class="icon-bg"/>
+                            
+                            <!-- Subtle texture lines -->
+                            <rect x="12" y="24" width="12" height="1" class="icon-detail" opacity="0.5"/>
+                            <rect x="12" y="27" width="10" height="1" class="icon-detail" opacity="0.5"/>
+                            <rect x="12" y="30" width="14" height="1" class="icon-detail" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Ziqian Wang</span>
+                </a>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -478,7 +558,7 @@
                     <div style="background: white; padding: 2.5rem; border-radius: 12px; border: 1px solid #e9ecef; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); margin: 2rem 0; line-height: 2; max-width: 800px; margin-left: auto; margin-right: auto;">
                         <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #2c3e50; text-align: left;">I am a PhD student in the History Department at the University of Washington, with research interests in modern Chinese history, legal history, and the history of gender and sexuality. My work explores the complex intersections of law, society, and identity in twentieth-century China.</p>
                         
-                        <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #2c3e50; text-align: left;">I am particularly committed to working with what scholars call "rubbish materials" (<span style="font-family: 'KaiTi', 'æ¥·ä½"', 'STKaiti', 'BiauKai', serif;">垃圾材料</span>) - sources that are often overlooked but provide invaluable insights into historical experiences. My completed projects include studies based on Mao-era judicial archives to examine court practices in sexual crime cases, as well as research on the legal transformations of sexual consent in twentieth-century China. My current paper, <em>"Legacy in Conflict: Legal Transformations and Practice of 'Raping Young Girls' in Modern China,"</em> examines these themes through detailed archival analysis.</p>
+                        <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #2c3e50; text-align: left;">I am particularly committed to working with what scholars call "rubbish materials" (<span style="font-family: 'KaiTi', '楷体', 'STKaiti', 'BiauKai', serif;">垃圾材料</span>) - sources that are often overlooked but provide invaluable insights into historical experiences. My completed projects include studies based on Mao-era judicial archives to examine court practices in sexual crime cases, as well as research on the legal transformations of sexual consent in twentieth-century China. My current paper, <em>"Legacy in Conflict: Legal Transformations and Practice of 'Raping Young Girls' in Modern China,"</em> examines these themes through detailed archival analysis.</p>
                         
                         <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #2c3e50; text-align: left;">I have presented my work at several academic venues, including the Young Scholars Conference at UC San Diego and workshops on local history in Zhejiang. Through archival research and critical analysis, I aim to contribute to our understanding of how legal frameworks shaped personal experiences and social relationships in modern Chinese society.</p>
                         
