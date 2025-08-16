@@ -135,7 +135,7 @@
             transform: scale(1);
             transition: all 0.3s ease;
             text-shadow: 2px 2px 4px rgba(52, 73, 94, 0.1);
-            font-family: 'KaiTi', '楷体', 'STKaiti', 'BiauKai', serif;
+            font-family: 'KaiTi', 'æ¥·ä½"', 'STKaiti', 'BiauKai', serif;
         }
 
         .chinese-name:hover {
@@ -394,6 +394,46 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Awards ticker animation */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .awards-scroll {
+            animation: scroll-left 40s linear infinite;
+        }
+
+        #awards-ticker:hover .awards-scroll {
+            animation-play-state: paused;
+        }
+
+        /* Fade effect on the edges */
+        #awards-ticker::before,
+        #awards-ticker::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        #awards-ticker::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        }
+
+        #awards-ticker::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        }
     </style>
 </head>
 <body>
@@ -438,7 +478,7 @@
                     <div style="background: white; padding: 2.5rem; border-radius: 12px; border: 1px solid #e9ecef; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); margin: 2rem 0; line-height: 2; max-width: 800px; margin-left: auto; margin-right: auto;">
                         <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #2c3e50; text-align: left;">I am a PhD student in the History Department at the University of Washington, with research interests in modern Chinese history, legal history, and the history of gender and sexuality. My work explores the complex intersections of law, society, and identity in twentieth-century China.</p>
                         
-                        <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #2c3e50; text-align: left;">I am particularly committed to working with what scholars call "rubbish materials" (<span style="font-family: 'KaiTi', '楷体', 'STKaiti', 'BiauKai', serif;">垃圾材料</span>) - sources that are often overlooked but provide invaluable insights into historical experiences. My completed projects include studies based on Mao-era judicial archives to examine court practices in sexual crime cases, as well as research on the legal transformations of sexual consent in twentieth-century China. My current paper, <em>"Legacy in Conflict: Legal Transformations and Practice of 'Raping Young Girls' in Modern China,"</em> examines these themes through detailed archival analysis.</p>
+                        <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #2c3e50; text-align: left;">I am particularly committed to working with what scholars call "rubbish materials" (<span style="font-family: 'KaiTi', 'æ¥·ä½"', 'STKaiti', 'BiauKai', serif;">垃圾材料</span>) - sources that are often overlooked but provide invaluable insights into historical experiences. My completed projects include studies based on Mao-era judicial archives to examine court practices in sexual crime cases, as well as research on the legal transformations of sexual consent in twentieth-century China. My current paper, <em>"Legacy in Conflict: Legal Transformations and Practice of 'Raping Young Girls' in Modern China,"</em> examines these themes through detailed archival analysis.</p>
                         
                         <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #2c3e50; text-align: left;">I have presented my work at several academic venues, including the Young Scholars Conference at UC San Diego and workshops on local history in Zhejiang. Through archival research and critical analysis, I aim to contribute to our understanding of how legal frameworks shaped personal experiences and social relationships in modern Chinese society.</p>
                         
@@ -446,15 +486,31 @@
                     </div>
                     
                     <h3 style="margin-top: 3rem; margin-bottom: 1.5rem; color: #2c3e50; font-size: 1.6rem;">Education</h3>
-                    <div style="background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e9ecef; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); max-width: 800px; margin-left: auto; margin-right: auto;">
-                        <div style="color: #555; font-size: 1.1rem; line-height: 1.8;">
-                            <div style="margin-bottom: 1.5rem; text-align: center;">
-                                <strong style="color: #2c3e50;">PhD in History</strong> (in progress)<br>
-                                <span style="color: #666;">University of Washington, Seattle, WA</span>
+                    <div id="education-container" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+                        <div id="education-box" style="background: white; padding: 2rem; border-radius: 12px; border: 1px solid #e9ecef; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+                            <div style="color: #555; font-size: 1.1rem; line-height: 1.8;">
+                                <div style="margin-bottom: 1.5rem; text-align: center;">
+                                    <strong style="color: #2c3e50;">PhD in History</strong> (in progress)<br>
+                                    <span style="color: #666;">University of Washington, Seattle, WA</span>
+                                </div>
+                                <div style="text-align: center;">
+                                    <strong style="color: #2c3e50;">B.A. in History</strong><br>
+                                    <span style="color: #666;">East China Normal University, Shanghai, China</span>
+                                </div>
                             </div>
-                            <div style="text-align: center;">
-                                <strong style="color: #2c3e50;">B.A. in History</strong><br>
-                                <span style="color: #666;">East China Normal University, Shanghai, China</span>
+                        </div>
+                        
+                        <!-- Awards ticker -->
+                        <div id="awards-ticker" style="margin-top: 10px; height: 35px; opacity: 0; visibility: hidden; transition: all 0.3s ease; overflow: hidden; display: flex; align-items: center; position: relative;">
+                            <div class="awards-scroll" style="display: flex; align-items: center; white-space: nowrap;">
+                                <span style="color: #999; font-size: 0.85rem; margin-right: 4rem;">• 2025 Thomas M. Power Prize, Department of History, UW</span>
+                                <span style="color: #999; font-size: 0.85rem; margin-right: 4rem;">• Hsiao Fellowship in China Studies, UW China Studies Program</span>
+                                <span style="color: #999; font-size: 0.85rem; margin-right: 4rem;">• Scholarship for University-level Top Prize, ECNU</span>
+                                <span style="color: #999; font-size: 0.85rem; margin-right: 4rem;">• Scholarship for University-level First Prize, ECNU</span>
+                                <span style="color: #999; font-size: 0.85rem; margin-right: 4rem;">• 2025 Thomas M. Power Prize, Department of History, UW</span>
+                                <span style="color: #999; font-size: 0.85rem; margin-right: 4rem;">• Hsiao Fellowship in China Studies, UW China Studies Program</span>
+                                <span style="color: #999; font-size: 0.85rem; margin-right: 4rem;">• Scholarship for University-level Top Prize, ECNU</span>
+                                <span style="color: #999; font-size: 0.85rem; margin-right: 4rem;">• Scholarship for University-level First Prize, ECNU</span>
                             </div>
                         </div>
                     </div>
@@ -562,6 +618,20 @@
             item.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0) scale(1)';
             });
+        });
+
+        // Awards ticker hover functionality
+        const educationBox = document.getElementById('education-box');
+        const awardsTicker = document.getElementById('awards-ticker');
+
+        educationBox.addEventListener('mouseenter', function() {
+            awardsTicker.style.opacity = '1';
+            awardsTicker.style.visibility = 'visible';
+        });
+
+        educationBox.addEventListener('mouseleave', function() {
+            awardsTicker.style.opacity = '0';
+            awardsTicker.style.visibility = 'hidden';
         });
     </script>
 </body>
