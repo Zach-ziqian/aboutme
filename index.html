@@ -414,7 +414,8 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Ziqian Wang</h1>
+                <div id="easter-egg" style="opacity: 0; transition: opacity 0.5s ease; font-size: 0.9rem; color: #999; margin-bottom: 1rem; font-style: italic;">This guy is an INFJ. Though he quotes Foucault, he dislikes conflict and hopes to maintain harmony and balance in relationships.</div>
+                <h1 id="name-hover" style="cursor: default;">Ziqian Wang</h1>
                 <div class="chinese-name">王子谦</div>
                 <p style="font-style: italic; font-size: 1.2rem; color: #555; max-width: 650px; margin: 0 auto; line-height: 1.6;">"Where there is power, there is resistance, and yet, or rather consequently, this resistance is never in a position of exteriority in relation to power."</p>
                 <p style="margin-top: 1rem; font-size: 0.9rem; color: #777;">— Michel Foucault</p>
@@ -486,6 +487,22 @@
     </footer>
 
     <script>
+        // Easter egg hover functionality
+        let hoverTimer;
+        const nameElement = document.getElementById('name-hover');
+        const easterEgg = document.getElementById('easter-egg');
+
+        nameElement.addEventListener('mouseenter', function() {
+            hoverTimer = setTimeout(() => {
+                easterEgg.style.opacity = '1';
+            }, 3000); // 3 seconds
+        });
+
+        nameElement.addEventListener('mouseleave', function() {
+            clearTimeout(hoverTimer);
+            easterEgg.style.opacity = '0';
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
